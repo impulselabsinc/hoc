@@ -1,0 +1,29 @@
+{
+  "name": "HourOfCode",
+  "version": "1.0.0",
+  "description": "Hour of Code tutorial",
+  "main": "main.js",
+  "author": "code.org",
+  "authors": "code.org",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electron/electron-quick-start.git"
+  },
+  "keywords": [
+    "Code",
+    "Star wars",
+    "tutorial"
+  ],
+  "author": "Code.org",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/electron/electron-quick-start/issues"
+  },
+  "homepage": "https://github.com/electron/electron-quick-start#readme",
+  "dependencies": {
+    "local-web-server": "^1.2.1"
+  }
+}

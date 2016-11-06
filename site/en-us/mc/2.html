@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html dir='ltr'>
+<head>
+<title>Minecraft Hour of Code #2</title>
+
+<meta name="viewport" content="minimal-ui" />
+<meta charset="utf-8" />
+<!--[if IE 9]>
+<meta content='IE=Edge' http-equiv='X-UA-Compatible'>
+<![endif]-->
+<link rel="stylesheet" media="all" href="/assets/application-71b279a97575e160bb30f172aeab792b.css" />
+<script src="/assets/application-fe0a2cb4566774039a83a23bad2bded5.js"></script>
+
+
+<script>
+  window.dashboard = window.dashboard || {};
+  (function () {
+    // subset of the string table used in JS. not this only supports strings
+    // that don't use params
+    var strs = {
+      less: "LESS",
+      more: "MORE",
+      beta: "beta",
+      submit: "Submit",
+      activerecord: {
+        attributes: {
+          user: {
+            email: "Email",
+            age: "Age",
+          }
+        }
+      },
+      footer: {
+        report_abuse: "Report Abuse",
+      },
+      project: {
+        share_title: "Share your project",
+        share_copy_link: "Copy the link:",
+        close: "Close",
+        click_to_remix: "Click \"Remix\" to spin-off your own version!",
+        remix: "Remix",
+        share: "Share",
+        rename: "Rename",
+        save: "Save",
+        my_projects: "My Projects",
+        more: "More",
+        delete: "Delete",
+        new: "Create New",
+        cancel: "Cancel",
+        delete_confirm_title: "Are you sure you want to delete this project?",
+        delete_confirm_text: "Deleting your project will permanently remove it from your My Projects list. Anyone you have shared the link to will no longer be able to view your project.",
+        edit_project: "Edit Project",
+        abuse: {
+          tos: "This project has been reported for violating Code.org\'s <a href=\'http://code.org/tos\'>Terms of Service<\/a> and cannot be shared with others.",
+          contact_us: "If you believe this to be an error, please <a href=\'https://code.org/contact\'>contact us.<\/a>",
+          go_to_code_studio: "Go to Code Studio",
+          report_abuse_form: {
+            intro: "If you have encountered offensive content, threats, cyberbullying, harassment, or an instance of copyright infringement for content you own while using apps built on Code Studio, please fill out the form below. We will take your report very seriously, investigate accordingly, and take appropriate action.",
+            validation: {
+              email: "Please provide an email address",
+              age: "Please specify an age",
+              abuse_type: "Please answer how this content violates the Terms of Service",
+              abuse_detail: "Please provide details regarding the content you are reporting",
+            },
+            abusive_url: "URL of the content being reported",
+            abuse_type: {
+              question: "How does this content violate the %{link_start}Terms of Service%{link_end}?",
+              harassment: "Threats, cyberbullying, harassement",
+              offensive: "Offensive content",
+              infringement: "Copyright Infringement",
+              other: "Other",
+            },
+            detail: "Please provide as much detail as possible regarding the content you are reporting.",
+            acknowledge: "By submitting this information, you acknowledge it will be handled in accordance with the terms of the %{link_start_privacy}Privacy Policy%{link_end} and the %{link_start_tos}Terms of Service%{link_end}",
+          }
+        }
+      }
+    };
+  
+    window.dashboard.i18n = {
+      /**
+       * Mimics dashboard's I18n.t, getting a string from the hierarchy
+       * @param {string} selector Selector the desired string, i.e. "project.abuse.tos"
+       * @param {object} params Set of key/value pairs where instances of %{key} in the
+       *   string are replaced with value
+       */
+      t: function (selector, params) {
+        var hierarchy = selector.split('.');
+        var current = strs;
+        hierarchy.forEach(function(item) {
+          current = current[item];
+          if (!current) {
+            throw new Error('i18n failed to find string: ' + selector);
+          }
+        });
+        if (typeof(current) !== 'string') {
+          throw new Error('i18n not a leaf: ' + selector);
+        }
+  
+        // Do param replacement
+        Object.keys(params || {}).forEach(function (key) {
+          current = current.replace(new RegExp('%{' + key + '}', 'g'), params[key]);
+        });
+        return current;
+      }
+    };
+  })();
+</script>
+
+</head>
+<body>
+<div class='wrapper'>
+
+<div class='header-wrapper hide_on_mobile'>
+<div class='header hide_on_mobile navbar-static-top'>
+<div class='container' style='width: 880px;'>
+<div class='navbar-header'>
+<div class='row header_row'>
+<div class='header_left'>
+<div class='header_logo'>
+<a href="/"><img src="/assets/codeorg-studio-logo-f590133bdbe0c0456fc84f849141a9e1.png" alt="Codeorg studio logo" /></a>
+</div>
+</div>
+<div class='header_middle'>
+<div class='header_level'>
+<div class='header_level_container'>
+<div class='header_text'></div>
+<div class='progress_container'></div>
+<div class='header_finished_link' style='display: none;'></div>
+<span class='header_trophy_link' style='display: none;'>
+<div class='header_text'>Trophies</div>
+<div class='header_status_bar current_trophies'></div>
+<div class='header_text max_trophies'></div>
+</span>
+<span class='header_popup_link' style='display: none;'>
+<div class='header_popup_link_glyph'>
+&#x25BC;
+</div>
+<div class='header_popup_link_text'>MORE</div>
+</span>
+</div>
+</div>
+<div class='header_popup'>
+<div class='header_popup_scrollable'>
+<div class='header_popup_header'>
+<span>
+Your progress
+</span>
+<div class='header_text' style='float: right;'></div>
+</div>
+<div class='header_popup_body'>
+<div class='loading'></div>
+</div>
+</div>
+<div class='header_popup_footer'>
+<div class='header_popup_close'>
+CLOSE
+</div>
+</div>
+</div>
+
+</div>
+<div class='header_right'>
+<span class='freeplay_links'>
+<a class='header_status_bar level_free_play playlab_free_play' href='/projects/playlab' style='display: none;' title='Make an App'>
+<i class='fa fa-rocket'></i>
+</a>
+<a class='header_status_bar level_free_play artist_free_play' href='/projects/artist' style='display: none;' title='Draw Something'>
+<i class='fa fa-pencil'></i>
+</a>
+<a class='header_status_bar level_free_play calc_free_play' href='/projects/calc' style='display: none;' title='Calculate Something'>
+<i class='fa fa-calculator'></i>
+</a>
+<a class='header_status_bar level_free_play eval_free_play' href='/projects/eval' style='display: none;' title='Draw Something'>
+<i class='fa fa-pencil'></i>
+</a>
+<a class='header_status_bar level_free_play applab_free_play' href='/projects/applab' style='display: none;' title='Make an App'>
+<i class='fa fa-mobile'></i>
+</a>
+</span>
+<span id='sign_in_or_user'></span>
+<script>
+  /* STATIC DISABLED */
+  /*
+  $(document).ready(function() {
+    $.ajax({
+      type: "GET",
+      url: '/dashboardapi/user_menu',
+      success: function(data) {
+        $('#sign_in_or_user').html(data);
+      }
+    });
+  });
+  */
+</script>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  //<![CDATA[
+  dashboard.buildHeader({"script_id":71,"script_name":"mc","script_stages":1,"freeplay_links":["playlab","artist"],"id":534,"position":1,"name":"Minecraft Hour of Code","title":"Minecraft Hour of Code","levels":[{"id":1122,"position":1,"kind":"puzzle","title":1,"url":"/en-us/mc/1.html","previous":false},{"id":1106,"position":2,"kind":"puzzle","title":2,"url":"/en-us/mc/2.html"},{"id":1126,"position":3,"kind":"puzzle","title":3,"url":"/en-us/mc/3.html"},{"id":1107,"position":4,"kind":"puzzle","title":4,"url":"/en-us/mc/4.html"},{"id":1123,"position":5,"kind":"puzzle","title":5,"url":"/en-us/mc/5.html"},{"id":1119,"position":6,"kind":"puzzle","title":6,"url":"/en-us/mc/6.html"},{"id":1124,"position":7,"kind":"puzzle","title":7,"url":"/en-us/mc/7.html"},{"id":1105,"position":8,"kind":"puzzle","title":8,"url":"/en-us/mc/8.html"},{"id":1666,"position":9,"kind":"puzzle","title":9,"url":"/en-us/mc/9.html"},{"id":1664,"position":10,"kind":"puzzle","title":10,"url":"/en-us/mc/10.html"},{"id":1661,"position":11,"kind":"puzzle","title":11,"url":"/en-us/mc/11.html"},{"id":1662,"position":12,"kind":"puzzle","title":12,"url":"/en-us/mc/12.html"},{"id":1125,"position":13,"kind":"puzzle","title":13,"url":"/en-us/mc/13.html"},{"id":1108,"position":14,"kind":"puzzle","title":14,"url":"/en-us/mc/14.html","next":false}],"finishLink":"congrats.html","finishText":"I've finished my Hour of Code"}, null, 1106, null, null, "mc")
+  //]]>
+</script>
+
+<div class='full_container'>
+
+
+<div id='notes-content' style='display: none;'>
+<ul>
+<li>
+<a href='#video'>
+Video.
+<span class='video-name'></span>
+</a>
+</li>
+<li>
+<a href='#notes-outer'>No video? Show notes.</a>
+</li>
+</ul>
+</div>
+<div style='display: none;'><div class='reference_area' id='reference_area'>
+<div style='clear: both;'></div>
+</div>
+<script>
+  $('.video_link').each(function() {
+    addClickTouchEvent($(this), $.proxy(function() {
+      showVideoDialog({
+        src: $(this).attr('data-src'),
+        name: $(this).attr('data-name'),
+        key: $(this).attr('data-key'),
+        download: $(this).attr('data-download'),
+        thumbnail: $(this).attr('data-thumbnail'),
+        enable_fallback: true,
+        autoplay: true
+      }, true);
+    }, this));
+  });
+  // Allow levels to specify how and where the reference area is rendered.
+  // Reparent the reference area under the target if the target exists.
+  $('#reference_area_target').append($('#reference_area'));
+  // Show only text links if "data-minimal" is set.
+  if ($('#reference_area_target').data('minimal')) {
+    $('#reference_area .video_thumbnail').hide()
+  }
+</script>
+</div>
+<div id='codeApp'>
+<div class='loading'></div>
+<div class='slow_load'>
+This is taking longer than usual...
+<br>
+<a href='javascript: location.reload();'>Try reloading the page</a>
+</div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    var form_selector = '.clone_level';
+    $(form_selector).on('ajax:beforeSend', function (e, xhr) {
+      $('.validation-error').empty();
+      var token = $('meta[name="csrf-token"]').attr('content');
+      xhr.setRequestHeader('X-CSRF-TOKEN', token);
+    });
+    $(form_selector).on('ajax:complete', function (e, data) {
+      if (data.status == "200") {
+        window.location.href = JSON.parse(data.responseText).redirect
+      }
+    });
+    $(form_selector).on("ajax:error", function (evt, xhr, status, error) {
+      var errors, errorText;
+      try {
+        errors = $.parseJSON(xhr.responseText);
+      } catch (err) {
+        errors = {message: "Error (" + error + "): " + xhr.responseText};
+      }
+      $('.validation-error')
+        .html("<p>Couldn't create level:</p>")
+        .append($("<ul/>")
+          .append(Object.keys(errors).map(function (v) {
+            return $("<li/>").text(v + ": " + errors[v]);
+          })));
+    });
+  });
+  
+  $('.clone_level').on('ajax:beforeSend', function (e, xhr) {
+    var validation_error = $('#validation-error').detach();
+    $(e.target).parent().append(validation_error);
+  });
+</script>
+
+
+</div>
+</div>
+<div id='page-small-footer'></div>
+<script>
+  window.dashboard.footer.render(React, {"i18nDropdown":"","copyrightInBase":true,"baseCopyrightString":"Copyright","baseMoreMenuString":"More","menuItems":[{"text":"Terms of Service","link":"/tos.html","newWindow":true},{"text":"Privacy Policy","link":"/privacy.html","newWindow":true}],"copyrightStrings":{"thank_you":"We%20thank%20our%20%3Ca%20href=%22https://code.org/about/donors%22%3Edonors%3C/a%3E,%20%3Ca%20href=%22https://code.org/about/partners%22%3Epartners%3C/a%3E,%20our%20%3Ca%20href=%22https://code.org/about/team%22%3Eextended%20team%3C/a%3E,%20our%20video%20cast,%20and%20our%20%3Ca%20href=%22https://code.org/about/advisors%22%3Eeducation%20advisors%3C/a%3E%20for%20their%20support%20in%20creating%20Code%20Studio.","help_from_html":"We especially want to recognize the engineers from Google, Microsoft, Facebook, Twitter, and many others who helped create these materials.","art_from_html":"Minecraft\u0026%238482;%20\u0026amp;%20\u0026copy;%202016%20Microsoft.%20All%20Rights%20Reserved.%3Cbr%20/%3EStar%20Wars\u0026%238482;%20\u0026amp;%20\u0026copy;%202016%20Disney%20and%20Lucasfilm.%20All%20Rights%20Reserved.%3Cbr%20/%3EFrozen\u0026%238482;%20\u0026amp;%20\u0026copy;%202016%20Disney.%20All%20Rights%20Reserved.%3Cbr%20/%3EIce%20Age\u0026%238482;%20\u0026amp;%20\u0026copy;%202016%2020th%20Century%20Fox.%20All%20Rights%20Reserved.%3Cbr%20/%3EAngry%20Birds\u0026%238482;%20\u0026amp;%20\u0026copy;%202009-2016%20Rovio%20Entertainment%20Ltd.%20All%20Rights%20Reserved.%3Cbr%20/%3EPlants%20vs.%20Zombies\u0026%238482;%20\u0026amp;%20\u0026copy;%202016%20Electronic%20Arts%20Inc.%20All%20Rights%20Reserved","powered_by_aws":"Powered by Amazon Web Services","trademark":"\u0026copy;%20Code.org,%202016.%20Code.org\u0026reg;,%20the%20CODE%20logo%20and%20Hour%20of%20Code\u0026reg;%20are%20trademarks%20of%20Code.org."}},
+    document.getElementById('page-small-footer'));
+</script>
+
+
+<link href='/assets/css/common-04595c4b1304d25dc1b6286fc9dbc46d.css' rel='stylesheet' type='text/css'>
+<link href='/assets/css/craft-cc96fcc96dcadd47b4c80a824f767683.css' rel='stylesheet' type='text/css'>
+<link href='/assets/css/colpick-a55db99fda22dbbc08a554d9cebd2abf.css' rel='stylesheet' type='text/css'>
+<script src='/assets/js/phaser/phaser-4d2e5fac41327342606a0c8c47b1aef1.js'></script>
+<script src='/assets/js/blockly-2125052e6353ae0f8dd3c681db740869.js'></script>
+<script src='/assets/js/en_us/blockly_locale-70ee6aca688a48d9c155a7c5dfa57084.js'></script>
+<script src='/assets/js/marked/marked-5e6364858d12af03c8c3427c15a12c28.js'></script>
+<script src='/assets/shared.min-a1c97f500809ccc433f37d8796cdec08.js'></script>
+<script src='/assets/js/common.min-b9d15a3edac26711fd8d866cd0ebd7bf.js'></script>
+<script src='/assets/js/en_us/common_locale-85297039a57ff07fec77f97d265e44eb.js'></script>
+<script src='/assets/js/en_us/craft_locale-dd9f7e3596c22d0f3c2db0ff3ff6e837.js'></script>
+<script src='/assets/js/craft.min-e5f71a60527644765aa3526b29615a3e.js'></script>
+
+<script>
+  //<![CDATA[
+  var script_path = "/en-us/mc/2.html";
+  var appOptions = {"levelGameName":"Craft","skinId":"craft","baseUrl":"/blockly/","app":"craft","levelId":"custom","level":{"toolbox":"\u003cxml\u003e\u003cblock type=\"craft_moveForward\"/\u003e\u003cblock type=\"craft_destroyBlock\"/\u003e\u003cblock type=\"craft_turn\"\u003e\u003ctitle name=\"DIR\"\u003eleft\u003c/title\u003e\u003c/block\u003e\u003cblock type=\"craft_turn\"\u003e\u003ctitle name=\"DIR\"\u003eright\u003c/title\u003e\u003c/block\u003e\u003c/xml\u003e","levelBuilderRequiredBlocks":"\u003cxml\u003e\u003cblock type=\"craft_destroyBlock\"/\u003e\u003cblock type=\"craft_moveForward\"/\u003e\u003c/xml\u003e","skin":"craft","groundPlane":["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],"groundDecorationPlane":["","","","","","","","","","","","","","","","","","","","","","","","","","","","","tallGrass","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","tallGrass","","","","","","","","",""],"actionPlane":["","","","","","","grass","grass","grass","grass","grass","grass","","","","","","","","","grass","grass","","","","","","","","","grass","grass","","","","","","","","","grass","grass","","","treeSpruce","","","","","","grass","","","","","","","","","","grass","","","","","","","","","","","","","","","","","","","grass","","","","","","","","","grass","grass","grass","grass","","","","","","","grass","grass"],"fluffPlane":"[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"]","playerStartPosition":[4,7],"playerStartDirection":0,"verificationFunction":"function (verificationAPI) {\r\n      return verificationAPI.countOfTypeOnMap(\"treeSpruce\") === 0;\r\n    }\r\n","instructions":"Wood is a very important resource. Many things are made from it. Walk to the tree and use the “destroy block” command to chop it down.","isK1":false,"skipInstructionsPopup":false,"neverAutoplayVideo":false,"ideal":4,"disableParamEditing":true,"disableVariableEditing":false,"useModalFunctionEditor":false,"useContractEditor":false,"contractHighlight":false,"contractCollapse":false,"examplesHighlight":false,"examplesCollapse":false,"examplesRequired":false,"definitionHighlight":false,"definitionCollapse":false,"disableExamples":false,"isDaytime":true,"embed":false,"freePlay":false,"gridWidth":10,"gridHeight":10,"puzzle_number":2,"stage_total":14,"noPadding":null,"lastAttempt":null,"submittable":false},"cacheBust":false,"droplet":false,"pretty":".min","scriptId":71,"scriptName":"mc","fullWidth":true,"smallFooter":true,"hasI18n":true,"callouts":[],"postMilestone":true,"serverLevelId":1106,"stagePosition":1,"levelPosition":2,"publicCaching":false,"isSignedIn":false,"pinWorkspaceToBottom":true,"hasVerticalScrollbars":true,"showExampleTestButtons":true,"rackEnv":"adhoc","report":{"fallback_response":{"success":{"timestamp":1471536687133,"script_id":71,"level_id":1106,"previous_level":"/en-us/mc/1.html","total_lines":null,"new_level_completed":null,"level_path":"/en-us/mc/2.html","redirect":"/en-us/mc/3.html","design":"white_background"},"failure":{"timestamp":1471536687136,"script_id":71,"level_id":1106,"previous_level":"/en-us/mc/1.html","message":"try again","design":"white_background"}},"callback":""}};
+  appOptions.locale = 'en_us';
+  apps.setupApp(appOptions);
+  apps.load(apps.init);
+  //]]>
+</script>
+
+</body>
+</html>
+<script>
+  function trackEvent() {}
+  function ga() {};
+</script>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta content='Code.org' property='og:site_name'>
+    <meta content='Congratulations' property='og:title'>
+    <meta content='500177453358606' property='fb:app_id'>
+    <meta content='article' property='og:type'>
+    <meta content='https://www.facebook.com/Code.org' property='article:publisher'>
+    <meta content='http://ec2-54-166-157-21.compute-1.amazonaws.com:8081/congrats?tutorial=minecraft_static_mc' property='og:url'>
+    <meta content='player' property='twitter:card'>
+    <meta content='@codeorg' property='twitter:site'>
+    <meta content='http://code.org/' property='twitter:url'>
+    <meta content='The Hour of Code is here' property='twitter:title'>
+    <meta content='The Hour of Code is a global movement reaching tens of millions of students in 180+ countries and over 30 languages. Ages 4 to 104.' property='twitter:description'>
+    <meta content='http://csedweek.org/images/code-video-thumbnail.jpg' property='twitter:image:src'>
+    <meta content='https://www.youtubeeducation.com/embed/rH7AjDMz_dc?iv_load_policy=3&amp;rel=0&amp;autohide=1&amp;showinfo=0' property='twitter:player'>
+    <meta content='1920' property='twitter:player:width'>
+    <meta content='1080' property='twitter:player:height'>
+    <title>Congratulations | Code.org</title>
+    <link href='/images/favicon.ico' rel='shortcut icon'>
+    <link href='/images/apple-touch-icon-precomposed.png' rel='apple-touch-icon'>
+    <script>
+      var is_ie8 = false;
+    </script>
+    <!--[if IE 8]>
+      <script>
+        is_ie8 = true;
+      </script>
+    <![endif]-->
+    <link href='/style.css' rel='stylesheet' type='text/css'>
+    <link href='/shared/css/user-menu.css' rel='stylesheet' type='text/css'>
+    <link href='/shared/css/details-polyfill.css' rel='stylesheet' type='text/css'>
+    <script src='/js/jquery.min.js'></script>
+    <script src='/shared/js/details-polyfill/jquery.details.min.js'></script>
+    <script src='/shared/js/details-polyfill/details-polyfill.js'></script>
+    <script src='/shared/js/angular/angular.min.js'></script>
+    <script src='/shared/js/angular-route/angular-route.min.js'></script>
+    <script src='/shared/js/angular-resource/angular-resource.min.js'></script>
+    <script src='/shared/js/angular-sanitize/angular-sanitize.min.js'></script>
+    <script src='/shared/js/ng-csv/ng-csv.min.js'></script>
+    <meta content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport'>
+    <link href='/css/brstrap.css' rel='stylesheet' type='text/css'>
+    <link href='/css/common.css' rel='stylesheet' type='text/css'>
+    <meta content='IE=8' http-equiv='X-UA-Compatible'>
+    <!--[if lt IE 9]>
+      <script src='/js/html5shiv.js'></script>
+      <script src='/js/respond.min.js'></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class='wrapper'>
+      <div class='desktop-feature' id='desktop-header'>
+        <style>
+          .arrow_box:after {
+            bottom: 100%;
+            left: 50px;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-color: rgba(54, 72, 84, 0);
+            border-bottom-color: rgb(88, 103, 113);
+            border-width: 8px;
+            margin-left: -10px;
+          }
+          
+          #headerlinks {
+            float: right;
+            position: relative;
+          }
+          
+          #learnlink {
+            cursor: pointer;
+          }
+          
+          #learnoptions {
+            position: absolute;
+            top: 45px;
+            left: 10px;
+            background-color: rgb(88, 103, 113);
+            color: white;
+            padding: 10px;
+            text-align: left;
+            margin-top: 10px;
+            border-radius: 4px;
+            width: 560px;
+            display: none;
+          }
+          
+          .downorangearrow {
+            display: inline-block;
+          }
+          
+          .downorangearrow:hover:after,
+          .downorangearrow:active:after {
+            top: 100%;
+            left: 40px;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-color: rgba(54, 72, 84, 0);
+            border-top-color: rgb(255, 128, 0);
+            border-width: 8px;
+            margin-left: 0px;
+          }
+        </style>
+        <div id='pageheader-wrapper'>
+          <div class='' id='pageheader'>
+            <div class='content'>
+              <div id='left'>
+                <a href='/'>
+                  <img id='logo' src='/images/logo.png' style='margin-left:5px'>
+                </a>
+              </div>
+              <div id='right'>
+                <div id='sign_in_or_user' style='display:block; float: right; margin: .6875em 0 0 30px;'></div>
+                <div class='desktop-feature'>
+                  <div id='headerlinks'>
+                    <div class='downorangearrow' style='margin: 0.9375em 0 0 30px;'>
+                      <div class='headerlink' id='learnlink' style='margin: 0px'>LEARN</div>
+                    </div>
+                    <a class='headerlink' href='https://code.org/educate'>TEACH</a>
+                    <a class='headerlink' href='https://code.org/promote'>STATS</a>
+                    <a class='headerlink' href='https://code.org/help'>HELP US</a>
+                    <a class='headerlink' href='https://code.org/about'>ABOUT</a>
+                    <div class='arrow_box' id='learnoptions' style=''>
+                      <a class='learnoption' href='https://code.org/learn' id='headerlearnlink_unknown' style='color: white; cursor: pointer; margin-right:35px; margin-left:10px'>Hour of Code</a>
+                      <a class='learnoption' href='https://studio.code.org' style='color: white; cursor: pointer; margin-right:35px'>Code Studio</a>
+                      <a class='learnoption' href='https://code.org/learn/beyond' style='color: white; cursor: pointer; margin-right:35px'>Other Courses</a>
+                      <a class='learnoption' href='https://code.org/learn/local' style='color: white; cursor: pointer; margin-right:10px'>Local Classes</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id='clear' style='clear:both'></div>
+            <div class='desktop-feature' id='loc'>
+            </div>
+          </div>
+        </div>
+        <script>
+          var headerSetup = false;
+          
+          $ = jQuery;
+          $(document).ready(function() {
+            if (headerSetup) {
+              return;
+            }
+            headerSetup = true;
+          
+            $("#learnlink").click(function() {
+              $("#learnoptions").fadeToggle();
+            });
+          });
+        </script>
+      </div>
+      <div class='mobile-headers mobile-feature' id='mobile-header'>
+        <div id='pageheader'>
+          <div class='container_responsive'>
+            <div id='left'>
+              <a href='/'>
+                <img id='logo' src='/images/logo.png'>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='container_responsive'>
+        <div class='mobile-pad' id='congrats' style='margin: 0 auto;'>
+          <h1>Congratulations on completing one Hour of Code</h1>
+          <div id='toprow'>
+            <div class='col-50' id='hoc-certificate-small' style='padding:20px; padding-top: 0; box-sizing: border-box'>
+              <a href='printcertificate.html' target='_blank'>
+                <img src='/images/fit-540/hour_of_code_certificate.jpg' width='100%'>
+              </a>
+            </div>
+            <div class='col-50' id='certificate'>
+              <script src='/js/jquery.placeholder.js'></script>
+              <script src='/js/base64.min.js'></script>
+              <script>
+                function showEmailError(error)
+                {
+                  $("input#email").toggleClass("input_error", error);
+                  $("#email_error").toggle(error);
+                  $("#email_okay").toggle(!error);
+                }
+                
+                function certificate_processResponse(data)
+                {
+                  var form = $("#certificate_form");
+                  var thanks = $("#certificate_thanks");
+                
+                  form.toggle(!data.certificate_sent);
+                  thanks.toggle(data.certificate_sent);
+                
+                  if (data.certificate_sent && data.session) {
+                    personalizeCertificate(data.session);
+                  }
+                }
+                
+                function certificate_processAnonymous() {
+                  $("#certificate_form").show();
+                  $("#certificate_thanks").hide();
+                }
+                
+                function certificate_disable()
+                {
+                  $("#certificate_form").hide();
+                  $("#certificate_disable").show();
+                }
+                
+                function processError(data)
+                {
+                  $("#gobutton").removeAttr('disabled');
+                  $("#gobutton").addClass("button_enabled").removeClass("button_disabled");
+                
+                  var badEmail = (data.status == 400 && data.responseJSON.email_s !== undefined);
+                
+                  showEmailError(badEmail);
+                }
+                
+                function requestCertificate()
+                {
+                  $("#gobutton").attr('disabled','disabled');
+                  $("#gobutton").removeClass("button_enabled").addClass("button_disabled");
+                
+                  showEmailError(false);
+                
+                  if (cookieValue != "null") {
+                    $('#session').attr('value', cookieValue)
+                
+                    $.ajax({
+                      url: "/api/hour/certificate",
+                      type: "post",
+                      dataType: "json",
+                      data: $('#request-certificate-form').serialize()
+                    }).done(certificate_processResponse).fail(processError);
+                  } else {
+                    personalizeAnonymousCertificate();
+                  }
+                  return false;
+                }
+                
+                function personalizeCertificate(session)
+                {
+                  $('#hoc-certificate-small a').attr('href', '/printcertificate/' + session);
+                  $('#hoc-certificate-small img').attr('src', '/api/hour/certificate/' + session + '-890.jpg');
+                }
+                
+                function personalizeAnonymousCertificate() {
+                  var courseName = atob(getURLParameter('s'));
+                
+                  var certificateData = btoa(JSON.stringify({name: $("#request-certificate-form #name").val(), course: courseName}))
+                  $('#hoc-certificate-small a').attr('href', '/v2/hoc/certificate/' + certificateData + '.jpg');
+                  $('#hoc-certificate-small img').attr('src', '/v2/hoc/certificate/' + certificateData + '.jpg');
+                
+                  $("#certificate_form").hide();
+                  $("#certificate_thanks").show();
+                }
+              </script>
+              <div id='certificate_body' style='margin-top: 30px; margin-bottom: 30px;'>
+                <div id='certificate_form' style='display: none'>
+                  <h2 style='margin-top: 0px; margin-bottom: 0px'>Personalize your certificate</h2>
+                  <form id='request-certificate-form' onsubmit='return requestCertificate()'>
+                    <div id='email_error' style="color:red; font-family: 'Gotham 7r', sans-serif; display: none">
+                      Please enter a valid email address
+                    </div>
+                    <div id='email_okay' style="color:red; font-family: 'Gotham 7r', sans-serif;">
+                      &nbsp;
+                    </div>
+                    <input id='session' name='session_s' type='hidden' value=''>
+                    <input class='grey_input' id='name' name='name_s' placeholder='Name' style='width: 167px'>
+                    &nbsp;
+                    <button class='button_enabled' id='gobutton' style='width:90px'>Submit</button>
+                  </form>
+                </div>
+                <div id='certificate_thanks' style='display: none'>
+                  <h2 style='margin-top: 0px; margin-bottom: .5em;'>Thanks for submitting!</h2>
+                  <p>
+                    Click on the certificate to download or print it. Now, keep going with our <a href='http://studio.code.org'>other courses</a>, or see more options to <a href='/learn/beyond'>Learn beyond an Hour</a>.
+                  </p>
+                </div>
+                <div id='certificate_disable' style='display: none'></div>
+              </div>
+              <div style='display:none;'>
+                <script>
+                  // Triggers the registration of a Google Analytics "share_hoc_certificate" event.
+                  // Args:
+                  //   social_platform: The social platform the HOC certificate is being shared on. 
+                  function trackSocialEvent(social_platform) {
+                    // Determine the tutorial being shared via the document referrer.
+                    if (!document.referrer) {
+                      tutorial = "none";
+                    } else if (document.referrer.indexOf("hoc") != -1) {
+                      tutorial = "angrybirds";
+                    } else if (document.referrer.indexOf("flappy") != -1) {
+                      tutorial = "flappy";
+                    } else if (document.referrer.indexOf("frozen") != -1) {
+                      tutorial = "frozen";
+                    } else if (document.referrer.indexOf("starwars") != -1) {
+                      tutorial = "starwars";
+                    } else {
+                      tutorial = "unknown";
+                    }
+                    trackEvent(social_platform, "share_hoc_certificate", tutorial);
+                  }
+                </script>
+                <div id='congrats-share-buttons'>
+                  <h2 style='margin-top: 0; margin-bottom: 0;'>Share your achievement</h2>
+                  <div class='share-buttons clear'>
+                    <div id='share-fb' style='display:inline-block; margin-bottom: 10px; margin-right: 20px'>
+                      <a class='window-popup' href='https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcode.org%2Fcertificates%2Fblank' onclick="trackSocialEvent('facebook');"><button class='button-color-share share-button-facebook'><i class='fa fa-facebook'></i>Share on Facebook</button></a>
+                    </div>
+                    <span id='like-fb' style='display:none; margin-bottom: 10px; margin-right: 20px'>
+                      <iframe allowtransparency='true' frameborder='0' scrolling='no' src='//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FCode.org&amp;width=200&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80&amp;appId=293113697493179' style='border:none; overflow:hidden; width:200px; height:80px; vertical-align:top'></iframe>
+                    </span>
+                    <span id='share-twitter' style='display:inline-block; margin-top: 10px'>
+                      <a class='window-popup' href='https://twitter.com/share?hashtags=&amp;related=codeorg&amp;text=I+just+did+the+%23HourOfCode+-+check+it+out%21+%40codeorg&amp;url=https%3A%2F%2Fcode.org%2Fcertificates%2Fblank' onclick="trackSocialEvent('twitter');"><button class='button-color-share share-button-twitter'><i class='fa fa-twitter'></i>Share on Twitter</button></a>
+                    </span>
+                    <span id='follow-twitter' style='display:none; margin-top: 10px'>
+                      <iframe allowtransparency='true' frameborder='0' scrolling='no' src='//platform.twitter.com/widgets/follow_button.html?screen_name=codeorg' style='width:200px; height:20px; vertical-align:top'></iframe>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style='clear: both; height:30px'></div>
+          <div style='display:none;'>
+            <div id='continue' style='background-color:grey; color:white; overflow:hidden; padding:20px; text-align:center'>
+              <p style="font-size: 18px; font-family: 'Gotham 5r', sans-serif;">
+                <b>Continue learning beyond an Hour</b>
+              </p>
+              <a href='http://studio.code.org'>
+                <button class='button-color-share' style='margin:10px'>
+                  <b>Try another Code Studio course</b>
+                </button>
+              </a>
+              <a href='https://code.org/learn/beyond'>
+                <button class='button-color-share' style='margin:10px'>
+                  <b>Try other courses online</b>
+                </button>
+              </a>
+              <a href='https://code.org/learn/local'>
+                <button class='button-color-share' style='margin:10px'>
+                  <b>Find local classes</b>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <script>
+          $(document).ready(function() {
+            setupPopupWindows();
+          });
+          
+          
+          // This is a separate function so that popup links that might appear later than documentReady 
+          // (such as in modal popup windows) can be set up as popup windows too.
+          
+          function setupPopupWindows() {
+          
+            // Unbind previous click handlers before binding this new one, since this function finds all
+            // window-popup links, even ones it would have setup already.
+          
+            $('a.window-popup').unbind().bind('click', function() {
+              // Don't open a new window for Facebook on the mobile front page.
+              if ($('body').hasClass('mobile-front') && $(this).hasClass('btn-facebook')) {
+                return false;
+              }
+          
+              var url = $(this).attr('href');
+              var width = 640;
+              var height = 480;
+              var left = (screen.width/2)-(width/2);
+              var top = (screen.height/2)-(height/2);
+          
+              share = window.open(url,'Share', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left);
+              if (window.focus) { share.focus() }
+              return false;
+            });
+          }
+        </script>
+        <img alt='minecraft_static_mc' class='tracking-pixel' height='1' src='https://code.org/api/hour/finish_minecraft_static_mc.png' width='1'>
+        <script>
+          var cookieValue;
+          
+          function getURLParameter(name) {
+            return decodeURI(
+              (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+            );
+          }
+          
+          function processResponse(data)
+          {
+            certificate_processResponse(data);
+          }
+          
+          $(document).ready(function()
+          {
+            $('#share-fb a').bind('click', function() {
+              $("#share-fb").hide(); $("#like-fb").css('display', 'inline-block');
+            });
+            $('#share-twitter a').bind('click', function() {
+              $("#share-twitter").hide(); $("#follow-twitter").css('display', 'inline-block');
+            });
+          
+            // Only show the Frozen "Print your Ice Art" section if we came from a
+            // page with "Frozen" in the URL
+            // TODO: This is a _terrible_ way to check which certificate we want
+            //       to show!  In particular, it means the certificate page cannot
+            //       be accurately bookmarked.
+            //       In the future, any tutorial-specific changes to the certificate
+            //       should depend on a URL slug or param, not on referrer!
+            var referredByFrozen = document.referrer.indexOf("frozen") != -1;
+            if (referredByFrozen) {
+              $('#print_option').show();
+            }
+          
+            // placeholder text for non-HTML5 browsers
+            $('input[type=text], textarea').placeholder();
+            $('input[type=email], textarea').placeholder();
+          
+            cookieValue = getURLParameter("i");
+            courseNameValue = getURLParameter("s");
+          
+            if (cookieValue != "null")
+            {
+              $.ajax({
+                url: "/api/hour/status/" + cookieValue,
+                dataType: "json"
+              }).done(processResponse);
+            }
+            else if (courseNameValue != "null")
+            {
+              certificate_processAnonymous();
+            } else {
+              certificate_disable();
+            }
+          });
+          
+          var petition;
+          $(document).ready(function()
+          {
+            petition = new Petition();
+          });
+        </script>
+        <div id='clearboth' style='clear:both'></div>
+        <div class='desktop-feature'>
+          <br>
+          <br>
+          <br>
+        </div>
+      </div>
+      <div class='push'></div>
+    </div>
+    <div class='desktop-feature'>
+      <footer id='pagefooter'>
+        <div class='content'>
+          <div style='clear:both; float: left;'>
+            <small class='dim'>
+              &copy; Code.org, 2015.  Code.org&reg;, the CODE logo and Hour of Code&reg; are trademarks of Code.org.
+            </small>
+          </div>
+          <div style='clear:both; float: left;'>
+            <small class='dim'>
+              Powered by Amazon Web Services
+            </small>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <div class='mobile-headers mobile-feature'>
+      <footer id='pagefooter'>
+        <div class='content' style='width:100%'>
+          <div class='left' style='float:left'>
+            &copy; Code.org, 2015
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+  </body>
+</html>

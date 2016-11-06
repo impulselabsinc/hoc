@@ -1,0 +1,83 @@
+// This is main process of Electron, started as first thing when your
+// app starts. This script is running through entire life of your application.
+// It doesn't have any windows which you can see on screen, but we can open
+// window from here.
+'use strict';
+
+const electron = require('electron');
+// Module to control application life.
+const app = electron.app;
+// Module to create native browser window.
+const BrowserWindow = electron.BrowserWindow;
+
+const childProcess = require('child_process');
+const localWebServer = require('local-web-server');
+const os = require('os');
+
+let mainWindow;
+process.chdir(__dirname);
+let port = Math.floor(Math.random() * 10000) + 8000;
+
+var nodeInterpreter = (os.platform == 'win32') ? './node.exe' : './node';
+let serverProcess = childProcess.spawn(nodeInterpreter, ['server.js', String(port)], {detached: false});
+console.log('started server on port ' + port);
+
+function createWindow () {
+  // Create the browser window.
+  mainWindow = new BrowserWindow({width: 1024, height: 768, nodeIntegration: false, "auto-hide-menu-bar": true});
+
+  mainWindow.loadURL('file://' + __dirname + '/index.html');
+  setTimeout(function() {
+    mainWindow.loadURL('http://localhost:' + port);
+  }, 9000);
+
+  // Load the start page of the app after a brief pause to allow the server to start.
+
+  // Emitted when the window is closed.
+  mainWindow.on('closed', function() {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    mainWindow = null;
+  });
+}
+
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+app.on('ready', createWindow);
+
+// Quit when all windows are closed.
+app.on('window-all-closed', function () {
+  killServer();
+  app.quit();
+});
+
+app.on('activate', function () {
+  // On OS X it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (mainWindow === null) {
+    createWindow();
+  }
+});
+
+function killServer() {
+  if (serverProcess) {
+    try {
+      // Make sure the server process is dead. This is supposed to
+      // happen automatically for spawned processes but we've seen
+      // cases where it isn't.
+      process.kill(serverProcess);
+    } catch (e) {
+    }
+    serverProcess = null;
+  }
+}
+
+var cleanExit = function() {
+  killServer();
+  process.exit()
+};
+
+process.on('uncaughtException', cleanExit);
+process.on('SIGINT', cleanExit); // catch ctrl-c
+process.on('SIGTERM', cleanExit); // catch kill
